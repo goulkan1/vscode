@@ -1,0 +1,67 @@
+" ========== .ideavimrc Configuration ==========
+
+" Set leader key to space
+let mapleader=" "
+
+" --- General Settings ---
+set scrolloff=5          " Keep 5 lines visible when scrolling
+set incsearch            " Incremental search
+set clipboard+=unnamed
+
+" --- Normal Mode Mappings ---
+nnoremap Q gq             " Q for formatting (like in original Vim)
+
+" Format code and optimize imports (correct action ID)
+nnoremap <leader>f :action ReformatCode<CR>:action OptimizeImports<CR>
+
+" Reload .ideavimrc (vimrc)
+" nnoremap <leader>r :source $MYVIMRC<CR>
+
+" Select all
+nnoremap <leader>a ggVG
+
+" Close current tab/content
+nnoremap <leader>w :action CloseContent<CR>
+
+" --- IdeaVim Plugins ---
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set easymotion
+set textobj-entire
+set ReplaceWithRegister
+set exchange
+Plug 'machakann/vim-highlightedyank'
+
+" Comment/uncomment easily
+Plug 'tpope/vim-commentary'
+
+" --- Additional (Optional) Mappings ---
+" Reload .ideavimrc
+nnoremap <leader>r :source ~/.ideavimrc<CR>
+
+" Toggle breakpoint easily
+nnoremap <leader>b :action ToggleLineBreakpoint<CR>
+" Go to code
+nmap gd <Action>(GotoDeclaration)
+nmap gy <Action>(GotoTypeDeclaration)
+nmap gi <Action>(GotoImplementation)
+nmap gu <Action>(ShowUsages)
+nmap gt <Action>(GotoTest)
+nmap gf <Action>(Back)
+nmap gb <Action>(Forward)
+nmap <leader>d <Action>(Debug)
+map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>o <Action>(FileStructurePopup)
+
+" git
+map <leader>s <Action>(SelectInProjectView)
+map <leader>a ggVG"+y
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+map <S-Space> <Action>(GotoNextError)
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
